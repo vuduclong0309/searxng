@@ -76,6 +76,7 @@ search:
   # remove format to deny access, use lower case.
   # formats: [html, csv, json, rss]
   formats:
+    - json
     - html
 
 server:
@@ -95,7 +96,7 @@ server:
   # If your instance owns a /etc/searxng/settings.yml file, then set the following
   # values there.
 
-  secret_key: "ultrasecretkey"  # Is overwritten by ${SEARXNG_SECRET}
+  secret_key: "1cd48afe5ffd4abc9970cce5433ac5e0"  # Is overwritten by ${SEARXNG_SECRET}
   # Proxy image results through SearXNG. Is overwritten by ${SEARXNG_IMAGE_PROXY}
   image_proxy: false
   # 1.0 and 1.1 are supported
@@ -220,8 +221,8 @@ outgoing:
 #
 plugins:
 
-  searx.plugins.calculator.SXNGPlugin:
-    active: true
+#  searx.plugins.calculator.SXNGPlugin:
+#    active: true
 
   searx.plugins.hash_plugin.SXNGPlugin:
     active: true
@@ -455,6 +456,7 @@ engines:
     categories: onions
     enable_http: true
     shortcut: ah
+    disabled: true
 
   - name: anaconda
     engine: xpath
@@ -2078,6 +2080,7 @@ engines:
     categories: onions
     enable_http: true
     shortcut: tch
+    disabled: true
 
   # TubeArchivist is a self-hosted Youtube archivist software.
   # https://docs.searxng.org/dev/engines/online/tubearchivist.html
@@ -2498,6 +2501,8 @@ engines:
     categories: images
     search_type: image
     shortcut: yai
+    base_url:
+      - https://yacy.searchlab.eu
     disabled: true
     # timeout can be reduced in 'local' search mode
     timeout: 5.0
