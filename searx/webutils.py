@@ -200,11 +200,11 @@ def get_static_file_list() -> list[str]:
 
 def get_result_templates(templates_path):
     result_templates = set()
-    templates_path_length = len(templates_path) + 1
     for directory, _, files in os.walk(templates_path):
         if directory.endswith('result_templates'):
             for filename in files:
-                f = os.path.join(directory[templates_path_length:], filename)
+                rel_dir = pathlib.Path(directory).relative_to(pathlib.Path(templates_path))
+                f = str(pathlib.PurePosixPath(rel_dir / filename))
                 result_templates.add(f)
     return result_templates
 
